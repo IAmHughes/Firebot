@@ -1,0 +1,102 @@
+<div style="margin-bottom: 10px">
+  <button class="btn btn-primary" ng-click="showAddEditGroupModal()"><i class="fas fa-plus-circle" style="margin-right:5px;"></i> New Group</button>
+</div>
+
+<div class="content-block">
+  <div class="content-block-body">
+    <!-- Groups Tab -->
+    <div class="row interactive-group-container">
+      
+      <!-- Show each group -->
+      
+      <div ng-repeat="group in groupsService.getViewerGroups(true) track by $index" class="fb-tile orange centered">
+        <div class="edit-btn" ng-click="showAddEditGroupModal(group)"></div>
+        <div class="header">
+          <div class="title edit-btn-spacer">
+            {{group.groupName}}
+          </div>
+        </div>
+        <div class="content row">
+          <div class="detail-wrapper nomargin">
+            <div class="detail">
+              {{group.users ? group.users.length : 0}}
+            </div>
+            <div class="detail-description">
+              Users
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal For Adding/Editting Viewer Group -->
+<script type="text/ng-template" id="addEditViewerGroupModal.html">
+  <div class="modal-header">
+    <button type="button" class="close" aria-label="Close" ng-click="dismiss()"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="editGroupLabel">{{isNewGroup ? "Add Group" : "Edit Group"}}</h4>
+  </div>
+  <div class="modal-body">
+    <div class="general-group-settings">
+      <div class="settings-title">
+        <h3>General Settings</h3>
+      </div>
+
+      <div class="input-group settings-groupid">
+        <span class="input-group-addon" id="basic-addon3">Group Name</span>
+        <input type="text" class="form-control interactive-group-id" aria-describedby="basic-addon3" ng-model="group.groupName">
+      </div>
+    </div>
+    <div>
+      <div class="user-list-header">
+        <div class="settings-title">
+          <h3 style="display:inline-block">Included Users</h3>
+          <div style="display:inline-block; width:50%; float:right; margin-top:20px; position: relative;">
+            <input type="text" class="form-control" placeholder="Search users" ng-model="searchText" style="padding-left: 27px;">
+            <span class="searchbar-icon"><i class="far fa-search"></i></span>
+          </div>      
+        </div>
+      </div>
+      <div id="user-list" style="padding-bottom: 20px;">
+        <table class="table">
+         <thead>
+           <tr>
+             <th>USERNAME</th>
+             <th></th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr ng-repeat="user in userList = (group.users | filter:searchText) | startFrom:(pagination.currentPage-1)*pagination.pageSize | limitTo:pagination.pageSize track by $index">
+             <td>{{user}}</td>
+             <td>
+               <span class="delete-button pull-right" ng-click="deleteUserAtIndex($index)">
+                 <i class="far fa-trash-alt"></i>
+               </span>
+             </td>
+           </tr>
+           <tr ng-show="group.users.length == 0">
+             <td><span style="opacity: 0.5;">No users in this group</span></td>
+             <td></td>
+           </tr>
+         </tbody>
+       </table>
+       <div ng-show="group.users.length > pagination.pageSize" style="text-align: center;">
+          <ul uib-pagination total-items="userList.length" ng-model="pagination.currentPage" items-per-page="pagination.pageSize" class="pagination-sm" max-size="5" boundary-link-numbers="true" rotate="true"></ul>
+       </div>
+       <div style="display: flex;justify-content: center;">
+         <div class="input-group" style="width: 50%;">
+           <input type="text" class="form-control" placeholder="New user" ng-model="newUser"ng-keyup="$event.keyCode == 13 ? addNewUser() : null">
+           <span class="input-group-btn">
+             <button class="btn btn-default" type="button" ng-click="addNewUser()">Add</button>
+           </span>
+        </div>
+       </div>
+    </div>
+    <div class="modal-footer">
+      <button ng-if="!isNewGroup" type="button" class="btn btn-danger delete-group-button pull-left" ng-click="saveChanges(true)">Delete Group</button>
+      <button type="button" class="btn btn-link" ng-click="dismiss()">Cancel</button>
+      <button type="button" class="btn btn-primary group-edit-save" ng-click="saveChanges(false)">{{isNewGroup ? "Add Group" : "Save Changes"}}</button>
+    </div>
+</script>

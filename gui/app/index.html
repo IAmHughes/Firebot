@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html ng-controller="MainController" ng-cloak>
+  <head>
+    <title>{{appTitle}}</title>
+    <link rel="icon" href="../../favicon.ico">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="https://use.fontawesome.com/b4d71b289b.js"></script>
+
+    <!--Webfont version of font awesome 5, use these from now on-->
+    <link rel="stylesheet" href="../fonts/fontawesome5/fontawesome-all.min.css">
+  
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto:100,300,400,500,700" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link ng-href="../css/{{appTheme()}}.css" rel="stylesheet">
+    
+    <script src="../js/plugins/jquery-3.1.1.slim.min.js"></script>
+    <script src="../js/plugins/jquery.min.js"></script>
+    <script src="../js/plugins/tether.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/plugins/jquery-ui.min.js"></script>
+    <script src="../js/plugins/jquery-ui-pack.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+    
+    <script type="text/javascript" src="./index.js"></script>
+    <script type="text/javascript" src="./directives/plugins/ngScrollGlue.js"></script>      
+	  <script type="text/javascript" src="./controllers/mainController.js"></script>
+    <script type="text/javascript" src="./controllers/interactiveController.js"></script>
+    <script type="text/javascript" src="./controllers/commandsController.js"></script>
+    <script type="text/javascript" src="./controllers/groupsController.js"></script>
+    <script type="text/javascript" src="./controllers/moderationController.js"></script>
+    <script type="text/javascript" src="./controllers/settingsController.js"></script>
+    <script type="text/javascript" src="./controllers/updatesController.js"></script>
+    <script type="text/javascript" src="./controllers/firstTimeUseModalController.js"></script>
+    <script type="text/javascript" src="./controllers/editBoardSettingsModalController.js"></script>
+    <script type="text/javascript" src="./controllers/editCommandSettingsModalController.js"></script>
+    <script type="text/javascript" src="./controllers/eventsController.js"></script>
+    <script type="text/javascript" src="./controllers/chatMessagesController.js"></script>
+    <script type="text/javascript" src="./controllers/hotkeysController.js"></script>
+    <script type="text/javascript" src="./services/boardService.js"></script>
+    <script type="text/javascript" src="./services/eventsService.js"></script>
+    <script type="text/javascript" src="./services/commandsService.js"></script>
+    <script type="text/javascript" src="./services/settingsService.js"></script>
+    <script type="text/javascript" src="./services/groupsService.js"></script>
+    <script type="text/javascript" src="./services/eventLogService.js"></script>
+    <script type="text/javascript" src="./services/chatMessagesService.js"></script>
+    <script type="text/javascript" src="./services/settingsService.js"></script>
+    <script type="text/javascript" src="./services/utilityService.js"></script>
+    <script type="text/javascript" src="./services/listenerService.js"></script>
+    <script type="text/javascript" src="./services/connectionService.js"></script>
+    <script type="text/javascript" src="./services/soundService.js"></script>
+    <script type="text/javascript" src="./services/effectHelperService.js"></script>
+    <script type="text/javascript" src="./services/updatesService.js"></script>
+    <script type="text/javascript" src="./services/websocketService.js"></script>
+    <script type="text/javascript" src="./services/notificationService.js"></script>
+    <script type="text/javascript" src="./services/hotKeyService.js"></script>
+    <script type="text/javascript" src="./services/connectionManager.js"></script>
+    <script type="text/javascript" src="./services/sidebarManager.js"></script>
+    <script type="text/javascript" src="./services/logger.js"></script>
+    <script type="text/javascript" src="./directives/effectOptions.js"></script>
+    <script type="text/javascript" src="./directives/controls/dropdownSelect.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosContainer.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosEnterExitAnimations.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosOverlayInstance.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosOverlayPosition.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosAudioOutputDevice.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosChatterSelect.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosCollapsablePanel.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/showEventsSettings.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eventListTextOptions.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosReplaceVariables.js"></script>
+    <script type="text/javascript" src="./directives/effect-option-settings/eosReplaceVariableSection.js"></script>
+    <script type="text/javascript" src="./directives/controls/scriptParameterOption.js"></script>
+    <script type="text/javascript" src="./directives/controls/fileChooser.js"></script>
+    <script type="text/javascript" src="./directives/controls/searchableEffectDropdown.js"></script>
+    <script type="text/javascript" src="./directives/controls/effectList.js"></script>
+    <script type="text/javascript" src="./directives/controls/notificationCenter.js"></script>
+    <script type="text/javascript" src="./directives/misc/tooltip.js"></script>
+    <script type="text/javascript" src="./directives/misc/connectionIcon.js"></script>
+    <script type="text/javascript" src="./directives/misc/contentBlock.js"></script>
+    <script type="text/javascript" src="./directives/misc/hotkeyCapture.js"></script>
+    <script type="text/javascript" src="./directives/misc/messageActions.js"></script>
+    <script type="text/javascript" src="./directives/sidebar/navLink.js"></script>
+    <script type="text/javascript" src="./directives/sidebar/navCategory.js"></script>
+    <script type="text/javascript" src="./directives/sidebar/sidebar.js"></script>
+    <script type="text/javascript" src="./directives/modals/misc/connectionPanelModal.js"></script>
+    <script type="text/javascript" src="./directives/modals/misc/aboutModal.js"></script>
+    <script type="text/javascript" src="./directives/modals/hotkeys/addOrEditHotkey/addOrEditHotkeyModal.js"></script>
+  </head>
+  <body>
+
+    <div class='loader-wrapper' ng-if="showSpinner">
+      <div class="loader">Loading...</div>
+    </div>
+
+    <sidebar></sidebar>  
+
+    <div class="fb-tab-content">
+      <div class="tab-header">
+        <span style="width:100%" class="noselect">{{sbm.currentTab}}</span>
+        <notification-center></notification-center>
+        <div class="logins-wrapper noselect" uib-dropdown uib-dropdown-toggle>
+          <img class="login-thumbnail noselect" ng-src="{{accounts.streamer.photoUrl}}">
+          <img class="login-thumbnail noselect" ng-src="{{accounts.bot.photoUrl}}">          
+          <div class="fb-arrow down login-arrow"></div>
+          <ul class="dropdown-menu" uib-dropdown-menu>
+            <li>
+              <a href ng-click="showManageLoginsModal()"><span style="vertical-align:-11.5%;"><i class="fal fa-sign-in"></i></span> Manage logins</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="tab-body-wrapper" ng-class="{ 'no-scroll': sbm.currentTabIsFullScreen() }"> 
+        <div class="tab-body" ng-class="{ 'fullpage-tab': sbm.currentTabIsFullScreen() }">
+          <!-- angular templating -->
+          <!-- this is where tab content will be injected -->
+          <div ng-view style="width: 100%"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Manage Logins Modal -->
+    <script type="text/ng-template" id="manageLoginsModal.html">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="dismiss()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="errorLabel">Manage Logins</h4>
+      </div>
+      <div class="modal-body">
+            <div class="row" style="text-align: center;">
+              <div class="col-sm-6 streamer-login top-padding">
+                <img class="login-pic" ng-src="{{accounts.streamer.photoUrl}}">
+                <h2>{{accounts.streamer.username}}</h2>
+                <button type="button" class="btn" ng-class="accounts.streamer.isLoggedIn ? 'btn-danger' : 'btn-success'" ng-click="loginOrLogout('streamer')">{{accounts.streamer.isLoggedIn ? "Logout" : "Login"}}</button>                
+              </div>
+              <div class="col-sm-6 bot-login top-padding">
+                <img class="login-pic" ng-src="{{accounts.bot.photoUrl}}">
+                <h2>{{accounts.bot.username}}</h2>
+                <button type="button" class="btn" ng-class="accounts.bot.isLoggedIn ? 'btn-danger' : 'btn-success'" ng-click="loginOrLogout('bot')">{{accounts.bot.isLoggedIn ? "Logout" : "Login"}}</button>
+              </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+      </div>
+    </script>
+    
+    <!-- Error Modal -->
+    <script type="text/ng-template" id="errorModal.html">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="dismiss()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="errorLabel">Error</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{message}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+      </div>
+    </script>
+
+    <!-- Info Modal -->
+    <script type="text/ng-template" id="infoModal.html">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" ng-click="dismiss()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="errorLabel">Info</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{message}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+      </div>
+    </script>
+    
+    <!-- overlay info modal -->
+    <script type="text/ng-template" id="overlayInfoModal.html">
+      <div class="modal-header" style="text-align:center;">
+        <h2 class="modal-title">Firebot Overlay Info</h2>
+      </div>
+      <div class="modal-body" style="text-align:center;display:flex;flex-direction: column;align-items: center;">
+        <div ng-hide="showingInstance">      
+          <p>Button effects that show things on stream (ie images, videos, etc) need Firebot's overlay file to be added to your broadcasting software.</p>
+          <h3>How To Add The Overlay</h3>
+          <p>In your broadcasting software, add a <b>Browser/Webpage Source</b></p>
+          
+          <p>Then in the settings for this <b>Browser/Webpage Source</b>, there should be a URL field. Copy and paste the following URL into that field:</p>
+        </div>
+        <div style="width:75%; margin-bottom:25px;">
+          <div class="input-group">
+            <input type="text" class="form-control" style="cursor:text;" ng-model="overlayPath" disabled>
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button" ng-click="copy()">Copy</button>
+            </span>
+          </div>
+          <p ng-if="pathCopied" style="color: green;">
+            Overlay path copied!
+          </p>
+        </div>
+
+        <div class="effect-info alert alert-warning">
+          <b>Please Note:</b> The overlay is hosted once Firebot starts running, so you may notice images and videos not showing up if you start your broadcasting software before Firebot. To prevent this, make sure to select <b>Refresh browser when scene becomes active</b> for the overlay Browser/Webpage source or just make sure Firebot is started first.
+        </div>
+      </div>
+      <div class="modal-footer" style="text-align:center;">
+        <button class="btn btn-primary" ng-click="dismiss()">Okay</button>
+      </div>
+    </script>
+
+    <!-- show events modal -->
+    <script type="text/ng-template" id="overlayEventsModal.html">
+      <div class="modal-header" style="text-align:center;">
+        <h2 class="modal-title">Event List Settings</h2>
+      </div>
+      <div class="modal-body">
+        <h3>Event List</h3>
+        <show-events-settings model="textSettings"></show-events-settings>
+
+        <h3>Text Presets</h3>
+        <event-list-text-options model="textSettings" is-global="true"></event-list-text-options>
+      </div>
+      <div class="modal-footer" style="text-align:center;">
+        <button class="btn btn-link" ng-click="dismiss()">Cancel</button>
+        <button class="btn btn-primary" ng-click="save()">Save</button>
+      </div>
+    </script>
+    
+    <!-- Just updated modal -->
+    <script type="text/ng-template" id="updatedModal.html">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <div>
+          <span><i class="fal fa-check-circle animated bounceIn" style="font-size: 193px;color: green;"></i></span>
+        </div>
+        <h1 style="animation-delay: 0.3s;" class="animated fadeIn">Update Successful!</h1>
+        <h3 style="color:darkgray; animation-delay: 0.3s;" class="animated fadeIn">Installed {{appVersion}}</h3>
+        <br />
+        <p style="animation-delay: 0.3s;" class="animated fadeIn">
+            You can see what's new in the <b>Updates</b> tab.
+        </p>              
+      </div>
+      <div class="modal-footer" style="text-align:center;">
+        <button style="animation-delay: 0.3s;" class="btn btn-primary animated fadeIn" ng-click="dismiss()">Okay</button>
+      </div>
+    </script>
+    
+    <!-- Download Modal -->
+    <script type="text/ng-template" id="downloadModal.html">
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body" style="text-align:center;">
+        <h1>{{downloadComplete ? 'Download complete!' : 'Downloading update...'}}</h1>
+        <h3 ng-if="downloadComplete" style="color:darkgray;">Firebot will restart shortly and install the update...</h3>
+        <div style="overflow: hidden;">
+          <div class="loader">Loading...</div>
+        </div>
+        <p ng-if="downloadHasError" style="color:red;">
+          {{errorMessage}}
+        </p>
+        <button ng-if="downloadHasError" class="btn btn-primary" ng-click="dismiss()">Close</button>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </script>
+
+    <!-- Edit Effects List Modal -->
+    <script type="text/ng-template" id="editEffectListModal.html">
+      <div class="modal-header flex-row-center jspacebetween">
+        <h4 class="modal-title" style="display:inline;">{{headerPrefix}} - Edit Effect List</h4>
+      </div>
+      <div class="modal-body">
+          <effect-list effects="effects" trigger="{{triggerType}}" update="effectListUpdated(effects)" is-array="true"></effect-list>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-link" ng-click="dismiss()">Cancel</button>
+          <button class="btn btn-primary" ng-click="save()">Save</button>
+      </div>
+    </script>
+
+    <!-- Edit Effect Modal -->
+    <script type="text/ng-template" id="editEffectModal.html">
+      <div class="modal-header flex-row-center jspacebetween no-before no-after" style="padding-bottom: 0">
+        <h4 class="modal-title" style="display:inline;">{{isAddMode ? "Add New Effect" : "Edit Effect"}}{{effect.type !== 'Nothing' ? " - " + effect.type : ""}}</h4>
+
+        <div uib-dropdown uib-dropdown-toggle>
+            <span class="noselect pointer effects-actions-btn" style="font-size: 31px"><i class="fal fa-ellipsis-v"></i></span>
+            <ul class="dropdown-menu" uib-dropdown-menu>
+                <li>
+                    <a href ng-click="copy()"><i class="far fa-copy" style="margin-right: 10px;"></i> Copy</a>
+                </li>
+                <li ng-class="{'disabled': !hasCopiedEffect()}" ng-click="!hasCopiedEffect() ? $event.stopPropagation() : null">
+                    <a href ng-click="paste()"><i class="far fa-paste" style="margin-right: 10px;"></i> Paste</a>
+                </li>
+                <li>
+                    <a href ng-click="delete()" style="color:red"><i class="far fa-trash-alt" style="margin-right: 10px;"></i> Delete</a>
+                </li>
+            </ul>
+        </div>
+      </div>
+      <ol class="breadcrumb" style="margin-bottom: 0px;padding-bottom:11px;background-color:transparent;">
+          <li ng-repeat="modal in openModals"><a href ng-click="closeToModal(modal.id)">{{modal.name}}</a></li>
+          <li class="active">{{effect.type}}</li>
+      </ol>
+      <div class="modal-body">
+          <div class="effect-select-wrapper">
+              <searchable-effect-dropdown trigger="{{triggerType}}" selected="effect.type" style="width:100%" update="effectTypeChanged(effectType, $index)"></searchable-effect-dropdown>
+
+          </div>
+          <div class="effect-settings-panel">
+              <div ng-show="effect.type == 'Nothing'" class="effect-specific-title"><h4>Please select an effect.</h4></div>
+              <effect-options effect="effect" type="effect.type" trigger="{{triggerType}}" ng-show="effect.type != null"><effect-options>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-link" ng-click="dismiss()">Cancel</button>
+
+          <button ng-if="openModals.length < 2" type="button" class="btn btn-primary" ng-click="save()">{{isAddMode ? "Add" : "Save"}}</button>
+          <div ng-if="openModals.length >= 2" class="btn-group" uib-dropdown>
+            <button id="split-button" type="button" class="btn btn-primary" ng-click="save()">{{isAddMode ? "Add" : "Save"}}</button>
+            <button type="button" class="btn btn-primary" uib-dropdown-toggle>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" style="min-width: 100%" uib-dropdown-menu role="menu" aria-labelledby="split-button">
+              <li role="menuitem" ng-click="saveAll()"><a href>Save All <tooltip text="'This will save all windows up until the last one ('+ openModals[0].name +')'"></tooltip></a></li>
+            </ul>
+          </div>
+      </div>
+    </script>
+  </body>
+</html>
